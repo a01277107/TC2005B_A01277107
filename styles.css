@@ -1,0 +1,96 @@
+/* Estilos generales */
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #f4f6f8;
+    color: #333333;
+    margin: 0;
+    padding: 0;
+}
+
+/* Selector de elemento */
+header {
+    background-color: #003366;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+/* Selector de ID */
+#contacto {
+    background-color: #e8f0fe;
+    padding: 20px;
+}
+
+/* Selector de clase */
+.titulo-seccion {
+    color: #003366;
+    border-bottom: 2px solid #003366;
+    padding-bottom: 5px;
+}
+
+/* Selector descendente */
+nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+/* Selector descendente */
+nav ul li {
+    display: inline;
+    margin: 0 10px;
+}
+
+/* Selector de enlaces */
+a {
+    text-decoration: none;
+    color: #0066cc;
+}
+
+a:hover {
+    color: #003366;
+}
+
+/* Selector de section */
+section {
+    background-color: white;
+    margin: 20px;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+/* Selector de article */
+article {
+    margin-bottom: 20px;
+}
+
+/* Formularios */
+form {
+    max-width: 500px;
+    margin: auto;
+}
+
+/* Inputs */
+input, textarea {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+}
+
+/* Botones */
+input[type="submit"],
+input[type="reset"] {
+    background-color: #003366;
+    color: white;
+    border: none;
+    padding: 10px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+/* Footer */
+footer {
+    background-color: #003366;
+    color: white;
+    text-align: center;
+    padding: 15px;
+}
