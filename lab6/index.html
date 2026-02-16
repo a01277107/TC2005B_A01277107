@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plata & Estilo | Joyería Fina</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="promo-banner">Cargando oferta...</div>
+
+<header>
+    <h1 id="main-title">Plata & Estilo - Colección Exclusiva</h1>
+    <p>Calidad 925 certificada</p>
+</header>
+
+<div class="container">
+    <div class="product-card">
+        <img src="corazón.jfif" alt="Corazón Abierto">
+        <h2 class="product-title">Corazón Abierto</h2>
+        <span class="price">$1,200.00 MXN</span>
+        <label for="qty1">Cantidad:</label>
+        <input type="number" id="qty1" value="0" min="0" max="10" class="input-qty">
+    </div>
+
+    <div class="product-card">
+        <img src="mano.jfif" alt="Mano de Hamsa">
+        <h2 class="product-title">Mano de Hamsa</h2>
+        <span class="price">$850.00 MXN</span>
+        <label for="qty2">Cantidad:</label>
+        <input type="number" id="qty2" value="0" min="0" max="10" class="input-qty">
+    </div>
+
+    <div class="product-card">
+        <img src="perlas.jfif" alt="Cadena de perlas">
+        <h2 class="product-title">Cadena de perlas</h2>
+        <span class="price">$1,500.00 MXN</span>
+        <label for="qty3">Cantidad:</label>
+        <input type="number" id="qty3" value="0" min="0" max="10" class="input-qty">
+    </div>
+</div>
+
+<div class="help-box" id="dynamic-help">
+    Pasa el cursor sobre un producto o campo para recibir asistencia.
+</div>
+
+<div class="summary">
+    <p>Subtotal: <span id="subtotal">$0.00</span></p>
+    <p>IVA (16%): <span id="iva">$0.00</span></p>
+    <p class="total-highlight">Total a Pagar: <span id="total">$0.00</span></p>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
