@@ -4,9 +4,320 @@ const filesystem= require("fs");
 
 filesystem.writeFileSync("hola.txt","Hola desde node");
 
+setTimeout(()=>{
+    console.log("te hackie!");
+},15000);
 const arreglo=[500, 60, 90, 100, 10, 20, 10000, 0, 120, 2000, 340, 1000, 50]
 for (let item of arreglo){
     setTimeout(()=>{
         console.log(item);
     }, item);
 }
+const html=  `<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Portafolio - Santiago Acosta Escamilla</title>
+
+    <!-- Bulma CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header>
+
+        <!-- HERO -->
+        <section class="hero is-primary is-medium">
+            <div class="hero-body has-text-centered">
+
+                <h1 class="title">
+                    Santiago Acosta Escamilla
+                </h1>
+
+                <h2 class="subtitle">
+                    Estudiante de Ingeniería en Tecnologías Computacionales
+                </h2>
+
+                <p>
+                    Tecnológico de Monterrey · Queretaro
+                </p>
+
+                <p class="mt-4">
+                    <strong>Matrícula:</strong> A01277107 <br>
+                    <strong>Correo:</strong> santiao.acoes.4@gmail.com
+                </p>
+
+            </div>
+        </section>
+
+    </header>
+
+    <!-- MAIN -->
+    <main>
+
+        <!-- FOTO -->
+        <section class="section">
+            <div class="container has-text-centered">
+
+                <h2 class="title is-3">Perfil</h2>
+                <figure class="image is-32x32 is-inline-block mb-3
+                "></figure>
+                    <img class="is-rounded" src="santi.jfif" alt="Foto de Santiago Acosta Escamilla">
+                </figure>
+
+                <p class="mt-4">
+                    Estudiante comprometido con el desarrollo tecnológico,
+                    la innovación y la creación de soluciones con impacto social.
+                </p>
+
+            </div>
+        </section>
+
+        <!-- SOBRE MI -->
+        <section class="section has-background-light">
+            <div class="container">
+
+                <h2 class="title is-3">Sobre mí</h2>
+
+                <p class="mb-4">
+                    Soy estudiante de cuarto semestre de Ingeniería en Tecnologías Computacionales
+                    en el Tecnológico de Monterrey, con interés en el desarrollo de software,
+                    análisis de datos e implementación de soluciones tecnológicas.
+                </p>
+
+                <p class="mb-4">
+                    Me caracterizo por ser una persona responsable, comprometida y orientada
+                    a resultados, con experiencia en proyectos académicos, hackatones
+                    y emprendimientos.
+                </p>
+
+                <p>
+                    Busco seguir fortaleciendo mis habilidades técnicas y personales
+                    para contribuir en proyectos innovadores dentro del sector tecnológico.
+                </p>
+
+            </div>
+        </section>
+
+        <!-- PROYECTOS -->
+        <section class="section">
+            <div class="container">
+
+                <h2 class="title is-3">Proyectos Destacados</h2>
+
+                <article class="box mb-4">
+
+                    <h3 class="title is-4">Aqualina</h3>
+
+                    <p>
+                        Sistema para el monitoreo del nivel de agua en tinacos mediante sensores,
+                        bases de datos y dashboards interactivos en Grafana.
+                    </p>
+
+                    <p class="mt-2">
+                        Permitió visualizar información en tiempo real y apoyar la toma
+                        de decisiones en el uso eficiente del agua.
+                    </p>
+
+                </article>
+
+                <article class="box">
+
+                    <h3 class="title is-4">AgroCash</h3>
+
+                    <p>
+                        Chatbot desarrollado para el análisis y gestión de información
+                        utilizando BigQuery, Looker y herramientas de automatización.
+                    </p>
+
+                    <p class="mt-2">
+                        Enfocado en facilitar el acceso a datos relevantes
+                        para la toma de decisiones.
+                    </p>
+
+                </article>
+
+            </div>
+        </section>
+
+        <!-- HABILIDADES -->
+<section class="section has-background-light" id="habilidades">
+    <div class="container">
+
+        <h2 class="title is-3">Habilidades</h2>
+
+        <div class="columns">
+
+            <!-- Técnicas -->
+            <div class="column">
+
+                <article class="box">
+
+                    <h3 class="title is-4">Habilidades Técnicas</h3>
+
+                    <ul>
+                        <li>Python</li>
+                        <li>SQL</li>
+                        <li>Internet de las Cosas (IoT)</li>
+                        <li>Análisis de datos</li>
+                        <li>Desarrollo de dashboards</li>
+                        <li>BigQuery y Looker</li>
+                        <li>Grafana</li>
+                    </ul>
+
+                </article>
+
+            </div>
+
+            <!-- Blandas -->
+            <div class="column">
+
+                <article class="box">
+
+                    <h3 class="title is-4">Habilidades Blandas</h3>
+
+                    <ul>
+                        <li>Liderazgo</li>
+                        <li>Trabajo en equipo</li>
+                        <li>Comunicación efectiva</li>
+                        <li>Resolución de problemas</li>
+                        <li>Gestión del tiempo</li>
+                        <li>Adaptabilidad</li>
+                    </ul>
+
+                </article>
+
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+
+        <!-- LIDERAZGO -->
+        <section class="section has-background-light">
+            <div class="container">
+
+                <h2 class="title is-3">Liderazgo y Experiencia</h2>
+
+                <ul>
+
+                    <li class="mb-3">
+                        Representativo de fútbol del Tecnológico de Monterrey
+                        Campus Hidalgo, desarrollando habilidades de liderazgo,
+                        trabajo en equipo y disciplina.
+                    </li>
+
+                    <li class="mb-3">
+                        Participación en hackatones como Fin4All y Act In Space,
+                        colaborando en equipos multidisciplinarios para resolver
+                        problemáticas reales.
+                    </li>
+
+                    <li class="mb-3">
+                        Emprendimiento personal en la comercialización de plata
+                        y colaboración en negocio familiar de compra-venta de oro,
+                        realizando atención directa a clientes a domicilio.
+                    </li>
+
+                </ul>
+
+            </div>
+        </section>
+
+        <!-- CONTACTO -->
+        <section class="section">
+            <div class="container">
+
+                <h2 class="title is-3">Contacto</h2>
+
+                <p class="mb-4">
+                    Si deseas contactarme para proyectos, colaboraciones
+                    o propuestas académicas, puedes hacerlo mediante
+                    el siguiente formulario.
+                </p>
+
+                <form>
+
+                    <div class="field">
+                        <label class="label" for="nombre">Nombre</label>
+                        <div class="control">
+                            <input class="input" type="text" id="nombre" name="nombre" required>
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label class="label" for="email">Correo electrónico</label>
+                        <div class="control">
+                            <input class="input" type="email" id="email" name="email" required>
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label class="label" for="mensaje">Mensaje</label>
+                        <div class="control">
+                            <textarea class="textarea" id="mensaje" name="mensaje" required></textarea>
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <div class="control">
+                            <button class="button is-primary" type="submit">
+                                Enviar mensaje
+                            </button>
+                        </div>
+                    </div>
+
+                </form>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer has-background-primary has-text-white">
+
+        <div class="content has-text-centered">
+
+            <p>
+                <strong>Santiago Acosta Escamilla</strong><br>
+                Ingeniería en Tecnologías Computacionales<br>
+                Matrícula: A01277107<br>
+                santiago.acoes.4@gmail.com
+            </p>
+
+            <p class="mt-3">
+                Editor utilizado: Visual Studio Code <br>
+                <a class="has-text-white"
+                   href="https://code.visualstudio.com/"
+                   target="_blank">
+                   https://code.visualstudio.com/
+                </a>
+            </p>
+
+        </div>
+
+    </footer>
+
+</body>
+</html> 
+`;
+const http = require('http');
+
+const server = http.createServer((request, response) => {  
+    //console.log(request);  
+    //console.log(response);
+    console.log(request.url);
+    response.setHeader('Content-Type', 'text/html');
+    response.write(html);
+    response.end();
+});
+
+server.listen(3001);
