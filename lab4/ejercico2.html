@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Ejercicio 2</title>
+</head>
+<body>
+<script>
+  let a = Math.floor(Math.random() * 10);
+  let b = Math.floor(Math.random() * 10);
+  let inicio = Date.now();
+  let respuesta = parseInt(prompt(`¿Cuánto es ${a} + ${b}?`));
+  let fin = Date.now();
+  let tiempo = (fin - inicio) / 1000;
+  if (respuesta === a + b) {
+    document.write("Correcto. Tiempo: " + tiempo + " segundos.");
+  } else {
+    document.write("Incorrecto. Tiempo: " + tiempo + " segundos.");
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Ejercicio 6</title>
+</head>
+<body>
+<h2>Gestión de Tareas</h2>
+<div id="salida"></div>
+<script>
+  class Tarea {
+    constructor(nombre) {
+      this.nombre = nombre;
+      this.completada = false;
+    }
+    completar() {
+      this.completada = true;
+    }
+    mostrar() {
+      return this.nombre + (this.completada ? " si " : " no ");
+    }
+  }
+
+  // Crear tareas
+  let tareas = [
+    new Tarea("Estudiar JavaScript"),
+    new Tarea("Hacer ejercicio"),
+    new Tarea("Leer un libro")
+  ];
+
+  // Completar una tarea
+  tareas[0].completar();
+
+  // Mostrar resultados
+  let salida = document.getElementById("salida");
+  tareas.forEach(t => {
+    salida.innerHTML += t.mostrar() + "<br>";
+  });
+</script>
+</body>
+</html>

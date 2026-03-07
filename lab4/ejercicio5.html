@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Ejercicio 5</title>
+</head>
+<body>
+<script>
+  function inverso(num) {
+    return parseInt(num.toString().split("").reverse().join(""));
+  }
+
+  // Pruebas
+  console.assert(inverso(1234) === 4321);
+  console.assert(inverso(987) === 789);
+
+  document.write(inverso(1234));
+</script>
+</body>
+</html>
