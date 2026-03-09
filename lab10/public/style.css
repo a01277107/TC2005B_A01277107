@@ -1,0 +1,135 @@
+/* Fuente moderna */
+body {
+  background-color: #fafafa; /* Fondo gris muy claro */
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  color: #333;
+}
+
+/* Encabezados */
+h1, h2 {
+  color: #444;
+  text-align: center;
+  margin-top: 20px;
+  font-weight: 600;
+}
+
+/* Barra superior */
+nav {
+  background-color: #ffffff;
+  padding: 15px;
+  text-align: center;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+nav a {
+  color: #444;
+  text-decoration: none;
+  margin: 0 15px;
+  font-weight: 500;
+}
+
+nav a:hover {
+  color: #d63384; /* toque rosa suave */
+}
+
+/* Banner promocional */
+.banner {
+  background: linear-gradient(135deg, #ffe0eb, #fff);
+  border-radius: 12px;
+  padding: 20px;
+  margin: 20px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+}
+
+.banner h2 {
+  color: #d63384;
+  margin-bottom: 10px;
+}
+
+/* Botones grandes estilo app */
+.btn-app {
+  display: inline-block;
+  background-color: #fff;
+  border: 1px solid #eee;
+  border-radius: 12px;
+  padding: 15px 25px;
+  margin: 10px;
+  font-weight: 500;
+  color: #444;
+  text-decoration: none;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.btn-app:hover {
+  background-color: #ffe0eb;
+  color: #d63384;
+}
+
+/* Tarjetas de menú */
+.card {
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+  margin: 15px;
+  padding: 15px;
+  text-align: center;
+}
+
+.card h3 {
+  color: #444;
+  font-weight: 600;
+}
+
+.card p {
+  color: #666;
+}
+
+/* Formularios */
+form {
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+  padding: 20px;
+  width: 320px;
+  margin: 20px auto;
+}
+
+input, button {
+  width: 100%;
+  margin: 10px 0;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+button {
+  background-color: #d63384;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #ff80ab;
+}
+
+/* Barra inferior estilo app */
+footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: #ffffff;
+  display: flex;
+  justify-content: space-around;
+  padding: 10px 0;
+  box-shadow: 0 -2px 5px rgba(0,0,0,0.05);
+}
+
+footer a {
+  color: #444;
+  text-decoration: none;
+  font-weight: 500;
+}
