@@ -1,0 +1,156 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500&family=Montserrat:wght@400;500&family=Inter:wght@400;500&display=swap');
+
+body {
+  background-color: #D2D1C5;
+  font-family: 'Montserrat', 'Inter', sans-serif;
+  margin: 0;
+  padding: 0;
+  color: #3A3735; 
+  background-image: url('\img\crepa.jpg'); 
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+/* Encabezados */
+h1, h2 {
+  font-family: 'Cinzel', serif;
+  color: #3A3735; 
+  text-align: center;
+  margin-top: 20px;
+  font-weight: 500;
+}
+
+/* Barra superior */
+nav {
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 15px;
+  text-align: center;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+nav a {
+  color: #3A3735;
+  text-decoration: none;
+  margin: 0 15px;
+  font-weight: 500;
+}
+
+nav a:hover {
+  color: #88A9BC;
+}
+
+/* Banner promocional */
+.banner {
+  background: linear-gradient(135deg, #EBD6D1, #fff);
+  border-radius: 12px;
+  padding: 20px;
+  margin: 20px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+}
+
+.banner h2 {
+  color: #88A9BC;
+  margin-bottom: 10px;
+}
+
+/* Botones grandes estilo app */
+.btn-app {
+  display: inline-block;
+  background-color: #fff;
+  border: 1px solid #eee;
+  border-radius: 12px;
+  padding: 15px 25px;
+  margin: 10px;
+  font-weight: 500;
+  color: #3A3735;
+  text-decoration: none;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+  transition: all 0.3s ease;
+}
+
+.btn-app:hover {
+  background-color: #EBD6D1; 
+  color: #88A9BC; 
+}
+
+/* Tarjetas de menú */
+.card {
+  background-color: rgba(255, 255, 255, 0.95);
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+  margin: 15px;
+  padding: 15px;
+  text-align: center;
+}
+
+.card h3 {
+  font-family: 'Cinzel', serif;
+  color: #3A3735;
+  font-weight: 500;
+}
+
+.card p {
+  color: #3A3735;
+  font-family: 'Montserrat', 'Inter', sans-serif;
+}
+
+/* Formularios */
+form {
+  background-color: rgba(255, 255, 255, 0.95);
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+  padding: 20px;
+  width: 320px;
+  margin: 20px auto;
+}
+
+input, button {
+  width: 100%;
+  margin: 10px 0;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-family: 'Montserrat', 'Inter', sans-serif;
+}
+
+button {
+  background-color: #88A9BC;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #3A3735;
+}
+
+/* Barra inferior estilo app */
+footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.9);
+  display: flex;
+  justify-content: space-around;
+  padding: 10px 0;
+  box-shadow: 0 -2px 5px rgba(0,0,0,0.05);
+}
+
+footer a {
+  color: #3A3735;
+  text-decoration: none;
+  font-weight: 500;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 14px;
+  font-family: 'Montserrat', 'Inter', sans-serif;
+}
+
+footer i {
+  margin-bottom: 4px;
+  color: #88A9BC;
+}

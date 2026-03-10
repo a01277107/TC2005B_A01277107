@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <%- include('includes/head') %>
+  <body>
+    <h1><%= pageTitle %></h1>
+
+    <h2>Agregar producto</h2>
+    <form method="POST" action="/admin/add">
+      Nombre: <input type="text" name="nombre" required><br>
+      Precio: <input type="number" name="precio" required><br>
+      <button type="submit">Agregar</button>
+    </form>
+
+    <h2>Productos actuales</h2>
+    <% if (productos.length > 0) { %>
+      <table>
+        <thead><tr><th>Nombre</th><th>Precio</th><th>Acción</th></tr></thead>
+        <tbody>
+          <% productos.forEach(p => { %>
+            <tr>
+              <td><%= p.nombre %></td>
+              <td>$<%= p.precio %></td>
+              <td>
+                <form method="POST" action="/admin/delete">
+                  <input type="hidden" name="nombre" value="<%= p.nombre %>">
+                  <button type="submit">Eliminar</button>
+                </form>
+              </td>
+            </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    <% } else { %>
+      <p>No hay productos registrados.</p>
+    <% } %>
+
+    <%- include('includes/footer') %>
+  </body>
+</html>
+

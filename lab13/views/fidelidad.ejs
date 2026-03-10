@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+  <%- include('includes/head') %>
+  <body>
+    <h1>Regístrate en nuestro sistema de fidelidad</h1>
+    <form method="POST" action="/fidelidad">
+      Nombre: <input type="text" name="nombre" required><br>
+      Correo: <input type="email" name="correo" required><br>
+      Puntos iniciales: <input type="number" name="puntos" value="0"><br>
+      <button type="submit">Enviar</button>
+    </form>
+
+    <%- include('includes/footer') %>
+  </body>
+</html>
