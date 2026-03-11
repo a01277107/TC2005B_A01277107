@@ -13,13 +13,10 @@ exports.getAdmin = (req, res, next) => {
 };
 
 // Agregar producto
-exports.postAdd = (req, res, next) => {
-  const nombre = req.body.nombre;
-  const precio = req.body.precio;
-
-  const producto = new Producto(nombre, precio);
+  exports.postAdd = (req, res, next) => {
+  const { nombre, precio, descripcion, imagen, categoria } = req.body;
+  const producto = new Producto(nombre, precio, descripcion, imagen, categoria);
   producto.save();
-
   res.redirect("/admin");
 };
 

@@ -154,3 +154,64 @@ footer i {
   margin-bottom: 4px;
   color: #88A9BC;
 }
+
+.filters {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin: 20px 0;
+}
+
+.filter {
+  background-color: #EBD6D1;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 20px;
+  font-weight: bold;
+  color: #3A3735;
+  cursor: pointer;
+}
+
+.filter.active {
+  background-color: #88A9BC;
+  color: white;
+}
+
+.menu-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+.card {
+  background-color: rgba(255, 255, 255, 0.95);
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+  padding: 15px;
+  text-align: center;
+}
+
+.card img {
+  width: 100%;
+  border-radius: 12px;
+  margin-bottom: 10px;
+}
+
+.card h3 {
+  font-family: 'Cinzel', serif;
+  color: #3A3735;
+  font-weight: 500;
+}
+
+.card p {
+  font-family: 'Montserrat', sans-serif;
+  color: #3A3735;
+  font-size: 14px;
+  margin: 5px 0;
+}
+
+.card strong {
+  color: #88A9BC;
+  font-size: 16px;
+}

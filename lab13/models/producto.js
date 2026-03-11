@@ -1,9 +1,12 @@
 const productos = [];
 
 module.exports = class Producto {
-  constructor(nombre, precio) {
+  constructor(nombre, precio, descripcion, imagen, categoria) {
     this.nombre = nombre;
     this.precio = precio;
+    this.descripcion = descripcion;
+    this.imagen = imagen;
+    this.categoria = categoria; 
   }
 
   save() {

@@ -2,19 +2,58 @@
 <html>
   <%- include('includes/head') %>
   <body>
-    <h1><%= pageTitle %></h1>
-    <div class="menu">
-      <% if (productos.length > 0) { %>
-        <% productos.forEach(p => { %>
-          <div class="card">
-            <h3><%= p.nombre %></h3>
-            <p>$<%= p.precio %></p>
-          </div>
-        <% }) %>
-      <% } else { %>
-        <p>No hay productos en el menú.</p>
-      <% } %>
+    <h1>Menú</h1>
+    <h2>Encuentra tu crepe perfecta</h2>
+    
+    <div class="filters">
+      <button class="filter active">Arma tu Crepa</button>
+      <button class="filter">Especiales</button>
+      <button class="filter">Artesanales</button>
+      <button class="filter">Saladas</button>
     </div>
+    <div class="menu-grid">
+      <h2>Arma tu Crepa</h2>
+      <% productos.filter(p => p.categoria === "arma").forEach(p => { %>
+        <div class="card">
+          <img src="<%= p.imagen %>" alt="<%= p.nombre %>">
+          <h3><%= p.nombre %></h3>
+          <p><%= p.descripcion %></p>
+          <strong>$<%= p.precio %></strong>
+        </div>
+        <% }) %>
+
+  <h2>Especiales</h2>
+  <% productos.filter(p => p.categoria === "especiales").forEach(p => { %>
+    <div class="card">
+      <img src="<%= p.imagen %>" alt="<%= p.nombre %>">
+      <h3><%= p.nombre %></h3>
+      <p><%= p.descripcion %></p>
+      <strong>$<%= p.precio %></strong>
+    </div>
+  <% }) %>
+
+  <h2>Artesanales</h2>
+  <% productos.filter(p => p.categoria === "artesanales").forEach(p => { %>
+    <div class="card">
+      <img src="<%= p.imagen %>" alt="<%= p.nombre %>">
+      <h3><%= p.nombre %></h3>
+      <p><%= p.descripcion %></p>
+      <strong>$<%= p.precio %></strong>
+    </div>
+  <% }) %>
+
+  <h2>Saladas</h2>
+  <% productos.filter(p => p.categoria === "saladas").forEach(p => { %>
+    <div class="card">
+      <img src="<%= p.imagen %>" alt="<%= p.nombre %>">
+      <h3><%= p.nombre %></h3>
+      <p><%= p.descripcion %></p>
+      <strong>$<%= p.precio %></strong>
+    </div>
+  <% }) %>
+</div>
+
+
     <%- include('includes/footer') %>
   </body>
 </html>

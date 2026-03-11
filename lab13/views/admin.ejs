@@ -8,6 +8,18 @@
     <form method="POST" action="/admin/add">
       Nombre: <input type="text" name="nombre" required><br>
       Precio: <input type="number" name="precio" required><br>
+      Descripción: <input type="text" name="descripcion" required><br>
+      Imagen (URL): <input type="text" name="imagen" required><br>
+      Categoría:
+     <select name="categoria" required>
+      <option value="arma">Arma tu Crepa</option>
+      <option value="especiales">Especiales</option>
+      <option value="artesanales">Artesanales</option>
+      <option value="saladas">Saladas</option>
+     </select><br>
+  <button type="submit">Agregar</button>
+</form>
+
       <button type="submit">Agregar</button>
     </form>
 
