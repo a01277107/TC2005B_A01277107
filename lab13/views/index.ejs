@@ -2,20 +2,15 @@
 <html>
   <%- include('includes/head') %>
   <body>
-    <h1>MAREÉ CREPE</h1>
+    <h1>Bienvenido <%= usuario ? usuario : "Invitado" %></h1>
+    <p>Has visitado <%= visitas %> veces.</p>
 
-    <div class="banner">
-      <h2>TEMPORADA</h2>
-      <p>2x1 en Crepas Dulces</p>
-      <small>Todos los martes lleva dos crepas dulces por el precio de una</small>
-    </div>
+    <form action="/login" method="POST">
+      <input type="text" name="usuario" placeholder="Tu nombre">
+      <button type="submit">Login</button>
+    </form>
 
-    <div style="text-align:center;">
-      <a href="/menu" class="btn-app">Arma tu Crepa</a>
-      <a href="/fidelidad" class="btn-app">Rewards</a>
-      <a href="/admin" class="btn-app">Favoritos</a>
-    </div>
-
-    <%- include('includes/footer') %>
+    <a href="/contador">Ir al contador</a> |
+    <a href="/logout">Logout</a>
   </body>
 </html>
