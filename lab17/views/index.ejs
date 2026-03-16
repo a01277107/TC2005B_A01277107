@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="es">
+  <%- include('includes/head') %>
+  <body>
+    <main class="page page-center">
+      <section class="panel panel-login">
+        <h1>Bienvenido a MAREÉ CREPE</h1>
+        <p class="subtitle">Inicia sesión para entrar a la app.</p>
+
+        <form action="/login" method="POST" class="form-card">
+          <label for="usuario">Usuario</label>
+          <input id="usuario" type="text" name="usuario" placeholder="Tu nombre" required>
+          <button type="submit">Entrar</button>
+        </form>
+
+        <p class="mini-text">Usuario actual: <strong><%= usuario ? usuario : 'Invitado' %></strong></p>
+        <p class="mini-text">Visitas registradas: <strong><%= visitas %></strong></p>
+      </section>
+    </main>
+  </body>
+</html>

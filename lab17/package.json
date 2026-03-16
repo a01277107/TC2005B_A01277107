@@ -1,0 +1,20 @@
+{
+  "name": "maree-crepe",
+  "version": "1.0.0",
+  "description": "Proyecto Maree Crepe con Express, EJS, sesiones y MySQL",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "dependencies": {
+    "cookie-parser": "^1.4.7",
+    "ejs": "^3.1.10",
+    "express": "^4.21.2",
+    "express-session": "^1.18.1",
+    "mysql2": "^3.14.5"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  }
+}
