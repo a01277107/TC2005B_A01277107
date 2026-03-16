@@ -1,0 +1,4 @@
+Usuarios de prueba:
+admin1 / admin123
+empleado1 / empleado123
+cliente1 / cliente123

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="es">
+  <%- include('includes/head') %>
+  <body>
+    <main class="page page-center auth-page">
+      <section class="panel panel-login auth-panel">
+        <p class="eyebrow">MAREÉ CREPE</p>
+        <h1>Crea tu cuenta</h1>
+        <p class="subtitle">Tu contraseña se guarda encriptada con bcrypt para mayor seguridad.</p>
+
+        <% if (error) { %>
+          <div class="message-error"><%= error %></div>
+        <% } %>
+
+        <form action="/register" method="POST" class="form-card auth-form">
+          <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+
+          <label for="username">Usuario</label>
+          <input id="username" type="text" name="username" placeholder="Elige un usuario" required>
+
+          <label for="password">Contraseña</label>
+          <input id="password" type="password" name="password" placeholder="Mínimo 6 caracteres" required>
+
+          <label for="confirmPassword">Confirmar contraseña</label>
+          <input id="confirmPassword" type="password" name="confirmPassword" placeholder="Repite tu contraseña" required>
+
+          <button type="submit">Registrarme</button>
+        </form>
+
+        <p class="mini-text auth-switch">¿Ya tienes cuenta? <a href="/login">Inicia sesión</a></p>
+      </section>
+    </main>
+  </body>
+</html>

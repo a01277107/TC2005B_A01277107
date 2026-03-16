@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+  <%- include('includes/head') %>
+  <body>
+    <main class="page with-footer">
+      <section class="hero-box compact">
+        <p class="eyebrow">MENÚ</p>
+        <h1>Encuentra tu crepa perfecta</h1>
+        <p class="subtitle">Todos los productos registrados desde admin se mostrarán aquí.</p>
+      </section>
+
+      <section class="category-block">
+        <h2>Arma tu crepa</h2>
+        <div class="menu-grid">
+          <% const arma = productos.filter(p => p.categoria === 'arma'); %>
+          <% if (arma.length === 0) { %>
+            <p class="empty-state">No hay productos en esta categoría.</p>
+          <% } %>
+          <% arma.forEach(p => { %>
+            <article class="card">
+              <img src="<%= p.imagen %>" alt="<%= p.nombre %>">
+              <h3><%= p.nombre %></h3>
+              <p><%= p.descripcion %></p>
+              <strong>$<%= Number(p.precio).toFixed(2) %></strong>
+            </article>
+          <% }) %>
+        </div>
+      </section>
+
+      <section class="category-block">
+        <h2>Especiales</h2>
+        <div class="menu-grid">
+          <% const especiales = productos.filter(p => p.categoria === 'especiales'); %>
+          <% if (especiales.length === 0) { %>
+            <p class="empty-state">No hay productos en esta categoría.</p>
+          <% } %>
+          <% especiales.forEach(p => { %>
+            <article class="card">
+              <img src="<%= p.imagen %>" alt="<%= p.nombre %>">
+              <h3><%= p.nombre %></h3>
+              <p><%= p.descripcion %></p>
+              <strong>$<%= Number(p.precio).toFixed(2) %></strong>
+            </article>
+          <% }) %>
+        </div>
+      </section>
+
+      <section class="category-block">
+        <h2>Artesanales</h2>
+        <div class="menu-grid">
+          <% const artesanales = productos.filter(p => p.categoria === 'artesanales'); %>
+          <% if (artesanales.length === 0) { %>
+            <p class="empty-state">No hay productos en esta categoría.</p>
+          <% } %>
+          <% artesanales.forEach(p => { %>
+            <article class="card">
+              <img src="<%= p.imagen %>" alt="<%= p.nombre %>">
+              <h3><%= p.nombre %></h3>
+              <p><%= p.descripcion %></p>
+              <strong>$<%= Number(p.precio).toFixed(2) %></strong>
+            </article>
+          <% }) %>
+        </div>
+      </section>
+
+      <section class="category-block last-block">
+        <h2>Saladas</h2>
+        <div class="menu-grid">
+          <% const saladas = productos.filter(p => p.categoria === 'saladas'); %>
+          <% if (saladas.length === 0) { %>
+            <p class="empty-state">No hay productos en esta categoría.</p>
+          <% } %>
+          <% saladas.forEach(p => { %>
+            <article class="card">
+              <img src="<%= p.imagen %>" alt="<%= p.nombre %>">
+              <h3><%= p.nombre %></h3>
+              <p><%= p.descripcion %></p>
+              <strong>$<%= Number(p.precio).toFixed(2) %></strong>
+            </article>
+          <% }) %>
+        </div>
+      </section>
+    </main>
+
+    <%- include('includes/footer') %>
+  </body>
+</html>

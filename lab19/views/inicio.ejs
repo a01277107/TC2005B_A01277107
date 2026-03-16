@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+  <%- include('includes/head') %>
+  <body>
+    <main class="page with-footer">
+      <section class="hero-box">
+        <p class="eyebrow">MAREÉ CREPE</p>
+        <h1>Tu experiencia de crepas en una sola app</h1>
+        <p class="subtitle">Explora el menú, administra productos y revisa tu programa de recompensas según los permisos de tu rol.</p>
+        <% if (currentUser) { %>
+          <p class="mini-text">Sesión iniciada como <strong><%= currentUser.username %></strong>. Rol(es): <strong><%= roles.join(', ') || 'Sin rol' %></strong></p>
+        <% } %>
+      </section>
+
+      <section class="banner">
+        <h2>TEMPORADA</h2>
+        <p>2x1 en crepas dulces</p>
+        <small>Todos los martes lleva dos crepas dulces por el precio de una.</small>
+      </section>
+
+      <section class="quick-actions">
+        <a href="/contador" class="btn-app">Contador</a>
+        <% if (privilegios.includes('ver_menu')) { %>
+          <a href="/menu" class="btn-app">Ver menú</a>
+        <% } %>
+        <% if (privilegios.includes('ver_fidelidad')) { %>
+          <a href="/fidelidad" class="btn-app">Rewards</a>
+        <% } %>
+        <% if (privilegios.includes('ver_admin')) { %>
+          <a href="/admin" class="btn-app">Administrador</a>
+        <% } %>
+      </section>
+    </main>
+
+    <%- include('includes/footer') %>
+  </body>
+</html>

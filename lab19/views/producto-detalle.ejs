@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="es">
+  <%- include('includes/head') %>
+  <body>
+    <main class="page page-center with-footer">
+      <section class="card detail-card last-block">
+        <img src="<%= producto.imagen %>" alt="<%= producto.nombre %>">
+        <h1><%= producto.nombre %></h1>
+        <p><%= producto.descripcion %></p>
+        <strong>$<%= Number(producto.precio).toFixed(2) %></strong>
+        <p class="mini-text">Categoría: <%= producto.categoria %></p>
+      </section>
+    </main>
+
+    <%- include('includes/footer') %>
+  </body>
+</html>

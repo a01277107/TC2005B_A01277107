@@ -1,0 +1,43 @@
+<script src="https://unpkg.com/lucide@latest"></script>
+
+<footer>
+  <a href="/inicio">
+    <i data-lucide="house"></i>
+    <span>Inicio</span>
+  </a>
+
+  <% if (privilegios.includes('ver_menu')) { %>
+    <a href="/menu">
+      <i data-lucide="utensils-crossed"></i>
+      <span>Menú</span>
+    </a>
+  <% } %>
+
+  <% if (privilegios.includes('ver_fidelidad')) { %>
+    <a href="/fidelidad">
+      <i data-lucide="gift"></i>
+      <span>Rewards</span>
+    </a>
+  <% } %>
+
+  <% if (privilegios.includes('ver_admin')) { %>
+    <a href="/admin">
+      <i data-lucide="shield-check"></i>
+      <span>Admin</span>
+    </a>
+  <% } %>
+
+  <% if (isAuthenticated) { %>
+    <form action="/logout" method="POST" class="footer-logout-form">
+      <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+      <button type="submit" class="footer-logout-btn" aria-label="Cerrar sesión">
+        <i data-lucide="log-out"></i>
+        <span>Salir</span>
+      </button>
+    </form>
+  <% } %>
+</footer>
+
+<script>
+  lucide.createIcons();
+</script>

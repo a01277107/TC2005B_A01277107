@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+  <%- include('includes/head') %>
+  <body>
+    <main class="page with-footer">
+      <section class="hero-box compact">
+        <p class="eyebrow">REWARDS</p>
+        <h1>Regístrate en nuestro sistema de fidelidad</h1>
+        <p class="subtitle">Acumula puntos y mantente cerca de tus productos favoritos.</p>
+      </section>
+
+      <section class="panel last-block">
+        <% if (mensaje) { %>
+          <div class="message-success"><%= mensaje %></div>
+        <% } %>
+
+        <form method="POST" action="/fidelidad" class="form-card wide-form">
+          <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+          <label for="nombre">Nombre</label>
+          <input id="nombre" type="text" name="nombre" required>
+
+          <label for="correo">Correo</label>
+          <input id="correo" type="email" name="correo" required>
+
+          <label for="puntos">Puntos iniciales</label>
+          <input id="puntos" type="number" name="puntos" value="0" min="0">
+
+          <button type="submit">Enviar</button>
+        </form>
+      </section>
+    </main>
+
+    <%- include('includes/footer') %>
+  </body>
+</html>

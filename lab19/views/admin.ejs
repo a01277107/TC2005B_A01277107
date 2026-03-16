@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="es">
+  <%- include('includes/head') %>
+  <body>
+    <main class="page with-footer">
+      <section class="hero-box compact">
+        <p class="eyebrow">ADMINISTRADOR</p>
+        <h1>Gestiona los productos, usuarios y roles</h1>
+        <p class="subtitle">Este panel usa RBAC: cada acción se habilita según los privilegios del usuario autenticado.</p>
+      </section>
+
+      <section class="admin-layout last-block">
+        <% if (privilegios.includes('crear_producto')) { %>
+          <div class="panel">
+            <h2>Agregar producto</h2>
+            <form method="POST" action="/admin/add" class="form-card wide-form">
+              <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+              <label for="nombre">Nombre</label>
+              <input id="nombre" type="text" name="nombre" required>
+
+              <label for="precio">Precio</label>
+              <input id="precio" type="number" step="0.01" min="0" name="precio" required>
+
+              <label for="descripcion">Descripción</label>
+              <textarea id="descripcion" name="descripcion" rows="4" required></textarea>
+
+              <label for="imagen">Imagen (URL)</label>
+              <input id="imagen" type="text" name="imagen" required>
+
+              <label for="categoria">Categoría</label>
+              <select id="categoria" name="categoria" required>
+                <option value="arma">Arma tu Crepa</option>
+                <option value="especiales">Especiales</option>
+                <option value="artesanales">Artesanales</option>
+                <option value="saladas">Saladas</option>
+              </select>
+
+              <button type="submit">Agregar producto</button>
+            </form>
+          </div>
+        <% } %>
+
+        <div class="panel">
+          <h2>Productos actuales</h2>
+
+          <% if (productos.length === 0) { %>
+            <p class="empty-state">No hay productos registrados todavía.</p>
+          <% } else { %>
+            <div class="table-wrapper">
+              <table>
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Categoría</th>
+                    <th>Precio</th>
+                    <% if (privilegios.includes('eliminar_producto')) { %>
+                      <th>Acción</th>
+                    <% } %>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% productos.forEach(p => { %>
+                    <tr>
+                      <td><%= p.id %></td>
+                      <td><%= p.nombre %></td>
+                      <td><%= p.categoria %></td>
+                      <td>$<%= Number(p.precio).toFixed(2) %></td>
+                      <% if (privilegios.includes('eliminar_producto')) { %>
+                        <td>
+                          <form method="POST" action="/admin/delete" class="inline-form">
+                            <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                            <input type="hidden" name="id" value="<%= p.id %>">
+                            <button type="submit" class="btn-danger">Eliminar</button>
+                          </form>
+                        </td>
+                      <% } %>
+                    </tr>
+                  <% }) %>
+                </tbody>
+              </table>
+            </div>
+          <% } %>
+        </div>
+      </section>
+
+      <% if (privilegios.includes('gestionar_usuarios')) { %>
+        <section class="panel last-block">
+          <h2>Asignación de roles</h2>
+          <p class="subtitle">Selecciona uno o varios roles por usuario. Al guardar, RBAC actualiza sus permisos de acceso.</p>
+          <div class="table-wrapper">
+            <table>
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Usuario</th>
+                  <th>Roles actuales</th>
+                  <th>Asignar roles</th>
+                  <th>Guardar</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% usuarios.forEach(u => { %>
+                  <tr>
+                    <td><%= u.id %></td>
+                    <td><%= u.username %></td>
+                    <td><%= u.roles %></td>
+                    <td>
+                      <form method="POST" action="/admin/users/roles" class="role-form">
+                        <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                        <input type="hidden" name="idUsuario" value="<%= u.id %>">
+                        <select name="roles" multiple size="<%= Math.min(roles.length, 4) || 1 %>">
+                          <% roles.forEach(role => { %>
+                            <option value="<%= role.id %>" <%= u.roles.split(', ').includes(role.nombre) ? 'selected' : '' %>>
+                              <%= role.nombre %>
+                            </option>
+                          <% }) %>
+                        </select>
+                    </td>
+                    <td>
+                        <button type="submit">Actualizar</button>
+                      </form>
+                    </td>
+                  </tr>
+                <% }) %>
+              </tbody>
+            </table>
+          </div>
+        </section>
+      <% } %>
+    </main>
+
+    <%- include('includes/footer') %>
+  </body>
+</html>
