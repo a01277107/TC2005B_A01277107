@@ -1,0 +1,133 @@
+﻿@startuml name 
+
+title CU39 Cancela pedido activo (Admin)
+
+actor Admin
+boundary "views/admin/orders.ejs" as Vista
+control "public/js/admin/orders.js" as JS
+control "routes/admin.routes.js" as Router
+control "controllers/admin.controlador.js" as Controlador
+entity "models/pedidos.model.js" as ModeloPedido
+entity "models/cliente.model.js" as ModeloCliente
+database "MySQL" as BD
+
+autonumber
+activate Admin
+== Selección de cancelación ==
+Admin -> Vista : Selecciona "Cancelar pedido" en pedido activo
+activate Vista
+
+ref over Vista,JS,Router,Controlador,ModeloPedido,BD
+MostrarModalAjax("Orders","Cancel","Pedidos")
+end ref
+
+Vista --> Admin : Modal visible para confirmar o abortar
+deactivate Vista
+
+== Decisión del administrador ==
+Admin -> Vista : Selecciona opción en modal
+activate Vista
+
+alt [admin aborta]
+    activate Vista
+    Vista -> JS : Evento abortar cancelación
+    activate JS
+    JS -> Vista : Cerrar modal
+    deactivate JS
+    Vista --> Admin : Pedido permanece activo
+    deactivate Vista
+
+else [admin confirma cancelación]
+    Vista -> JS : Evento confirmar cancelación
+    activate JS
+    JS ->> Router : POST /admin/api/orders/:id/cancel
+    activate Router
+    Router ->> Controlador : cancelActiveOrder(req, res)
+    activate Controlador
+
+    Controlador ->> ModeloPedido : await fetchOne(idOrden)
+    activate ModeloPedido
+    ModeloPedido ->> BD : SELECT orden, cliente WHERE ID_Orden = ?
+    activate BD
+    BD -->> ModeloPedido : rows
+    deactivate BD
+    ModeloPedido --> Controlador : [ordenRows]
+    deactivate ModeloPedido
+
+    alt [orden no encontrada]
+        Controlador -> Router : return 404 JSON {ok: false, message: "La orden no existe."}
+        deactivate Controlador
+        Router --> JS : 404 Error Response
+        deactivate Router
+        JS -> Vista : Mostrar mensaje de error
+        deactivate JS
+        Vista --> Admin : Orden no encontrada
+        deactivate Vista
+
+    else [orden existe]
+        activate Controlador
+        Controlador ->> ModeloPedido : await cancelActiveOrder(idOrden)
+        activate ModeloPedido
+        ModeloPedido ->> BD : UPDATE orden SET Estado_Orden = 'Cancelada' WHERE ID_Orden = ?
+        activate BD
+        BD -->> ModeloPedido : affectedRows
+        deactivate BD
+        ModeloPedido --> Controlador : [cancelResult]
+        deactivate ModeloPedido
+
+        alt [cancelación fallida]
+            Controlador -> Router : return 409 JSON {ok: false, message: "No se pudo cancelar la orden porque ya estaba cancelada."}
+            deactivate Controlador
+            Router --> JS : 409 Conflict Response
+            deactivate Router
+            JS -> Vista : Mostrar mensaje de conflicto
+            deactivate JS
+            Vista --> Admin : Cancelación fallida
+            deactivate Vista
+
+        else [cancelación exitosa]
+            Controlador -> ModeloCliente : await fetchContactDataByOrder(idOrden)
+            activate ModeloCliente
+            ModeloCliente ->> BD : SELECT cliente, telefono, correo FROM cliente JOIN orden WHERE ID_Orden = ?
+            activate BD
+            BD -->> ModeloCliente : clienteRows
+            deactivate BD
+            ModeloCliente --> Controlador : [clienteRows]
+            deactivate ModeloCliente
+
+            alt [datos cliente inválidos]
+                Controlador -> Router : return 500 JSON {ok: false, message: "Error al consultar datos del usuario"}
+                deactivate Controlador
+                Router --> JS : 500 Error Response
+                deactivate Router
+                JS -> Vista : Mostrar mensaje de error
+                deactivate JS
+                Vista --> Admin : Error en datos cliente
+                deactivate Vista
+
+            else [datos cliente válidos]
+                Controlador -> Controlador : Construir mensaje de notificación
+                note right of Controlador
+                  Extraer nombre cliente y generar mensaje
+                end note
+
+                Controlador -> Router : return 200 JSON {ok: true, message: "Orden cancelada correctamente.", cliente, notificacion}
+                deactivate Controlador
+                Router --> JS : 200 Success Response
+                deactivate Router
+                JS -> Vista : Cerrar modal y actualizar UI
+                deactivate JS
+                Vista --> Admin : Pedido cancelado y notificación preparada
+                deactivate Vista
+            end
+        end
+    end
+end
+
+opt [error inesperado]
+    Controlador -> Router : return 500 JSON {ok: false, message: "Ocurrió un error al cancelar la orden."}
+    Router --> JS : 500 Error Response
+    JS -> Vista : Mostrar error genérico
+end
+
+@enduml
