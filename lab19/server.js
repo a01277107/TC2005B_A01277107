@@ -7,6 +7,7 @@ const csrf = require('csurf');
 const rutas = require('./routes/rutas');
 const productosRoutes = require('./routes/productos');
 const authRoutes = require('./routes/auth');
+const externalRoutes = require('./routes/external');
 
 const app = express();
 const PORT = 3009;
@@ -41,6 +42,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(authRoutes);
 app.use(rutas);
 app.use(productosRoutes);
+app.use('/api', externalRoutes);
 
 app.use((error, req, res, next) => {
   if (error.code === 'EBADCSRFTOKEN') {
