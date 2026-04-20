@@ -13,7 +13,7 @@
         <% if (privilegios.includes('crear_producto')) { %>
           <div class="panel">
             <h2>Agregar producto</h2>
-            <form method="POST" action="/admin/add" class="form-card wide-form">
+            <form method="POST" action="/admin/add" class="form-card wide-form" enctype="multipart/form-data">
               <input type="hidden" name="_csrf" value="<%= csrfToken %>">
               <label for="nombre">Nombre</label>
               <input id="nombre" type="text" name="nombre" required>
@@ -24,8 +24,8 @@
               <label for="descripcion">Descripción</label>
               <textarea id="descripcion" name="descripcion" rows="4" required></textarea>
 
-              <label for="imagen">Imagen (URL)</label>
-              <input id="imagen" type="text" name="imagen" required>
+                <label for="imagen">Imagen (JPG/PNG)</label>
+                <input id="imagen" type="file" name="imagen" accept="image/jpeg,image/png" required>
 
               <label for="categoria">Categoría</label>
               <select id="categoria" name="categoria" required>

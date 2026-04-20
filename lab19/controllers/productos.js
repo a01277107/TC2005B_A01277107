@@ -43,22 +43,24 @@ exports.getAdmin = (req, res) => {
     });
 };
 
-exports.postAddProducto = (req, res) => {
-  const { nombre, descripcion, precio, imagen, categoria } = req.body;
 
-  const nuevoProducto = new Producto(
-    nombre,
-    descripcion,
-    Number(precio),
-    imagen,
-    categoria
-  );
+exports.postAddProducto = (req, res) => {
+  const { nombre, descripcion, precio, categoria } = req.body;
+
+  if (!req.file) {
+    return res.status(400).render('admin', {
+      pageTitle: 'Administrador',
+      mensaje: 'Debes subir una imagen JPG o PNG.'
+    });
+  }
+
+  const imagen = '/uploads/' + req.file.filename;
+
+  const nuevoProducto = new Producto(nombre, descripcion, Number(precio), imagen, categoria);
 
   nuevoProducto
     .save()
-    .then(() => {
-      res.redirect('/admin');
-    })
+    .then(() => res.redirect('/admin'))
     .catch((err) => {
       console.log(err);
       res.status(500).render('500', {
@@ -67,6 +69,7 @@ exports.postAddProducto = (req, res) => {
       });
     });
 };
+
 
 exports.postDeleteProducto = (req, res) => {
   const { id } = req.body;
