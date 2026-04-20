@@ -1,0 +1,11 @@
+START TRANSACTION;
+
+INSERT INTO entregan(clave, rfc, numero, fecha, cantidad)
+VALUES(1, 'ABC123', 10, CURDATE(), 50);
+
+UPDATE materiales
+SET costo = costo + 0  -- aquí podrías ajustar inventario o costos
+WHERE clave = 1;
+
+COMMIT;
+-- Si algo falla: ROLLBACK;

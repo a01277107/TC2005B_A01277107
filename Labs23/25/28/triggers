@@ -1,0 +1,13 @@
+DELIMITER //
+CREATE TRIGGER actualizarPresupuesto
+AFTER INSERT ON entregan
+FOR EACH ROW
+BEGIN
+    DECLARE v_precio FLOAT;
+    SELECT costo INTO v_precio FROM materiales WHERE clave = NEW.clave;
+    
+    UPDATE proyectos
+    SET presupuesto = presupuesto + (v_precio * NEW.cantidad)
+    WHERE numero = NEW.numero;
+END //
+DELIMITER ;

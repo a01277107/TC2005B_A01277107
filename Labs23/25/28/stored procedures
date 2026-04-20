@@ -1,0 +1,20 @@
+DELIMITER //
+CREATE PROCEDURE registrarEntrega(
+    IN p_clave INT,
+    IN p_rfc VARCHAR(20),
+    IN p_numero INT,
+    IN p_fecha DATE,
+    IN p_cantidad INT
+)
+BEGIN
+    -- Validar existencia
+    IF EXISTS (SELECT 1 FROM materiales WHERE clave = p_clave)
+       AND EXISTS (SELECT 1 FROM proveedores WHERE rfc = p_rfc)
+       AND EXISTS (SELECT 1 FROM proyectos WHERE numero = p_numero) THEN
+        INSERT INTO entregan(clave, rfc, numero, fecha, cantidad)
+        VALUES(p_clave, p_rfc, p_numero, p_fecha, p_cantidad);
+    ELSE
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Datos inválidos';
+    END IF;
+END //
+DELIMITER ;
